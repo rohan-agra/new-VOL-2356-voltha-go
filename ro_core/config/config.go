@@ -37,7 +37,7 @@ const (
 	defaultKVStoreHost             = "127.0.0.1"
 	defaultKVStorePort             = 2379 // Consul = 8500; Etcd = 2379
 	defaultKVTxnKeyDelTime         = 60
-	defaultLogLevel                = 0
+	defaultLogLevel                = "DEBUG"
 	defaultBanner                  = false
 	defaultDisplayVersionOnly      = false
 	defaultCoreTopic               = "rocore"
@@ -68,7 +68,7 @@ type ROCoreFlags struct {
 	KVStorePort             int
 	KVTxnKeyDelTime         int
 	CoreTopic               string
-	LogLevel                int
+	LogLevel                string
 	Banner                  bool
 	DisplayVersionOnly      bool
 	ROCoreKey               string
@@ -156,7 +156,7 @@ func (cf *ROCoreFlags) ParseCommandArguments() {
 	flag.IntVar(&(cf.KVTxnKeyDelTime), "kv_txn_delete_time", defaultKVTxnKeyDelTime, help)
 
 	help = fmt.Sprintf("Log level")
-	flag.IntVar(&(cf.LogLevel), "log_level", defaultLogLevel, help)
+	flag.StringVar(&(cf.LogLevel), "log_level", defaultLogLevel, help)
 
 	help = fmt.Sprintf("Show startup banner log lines")
 	flag.BoolVar(&cf.Banner, "banner", defaultBanner, help)
